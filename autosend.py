@@ -22,6 +22,7 @@ load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = os.getenv("DISCORD_CHANNEL_ID")
+CHANNEL_ID_SURGE = os.getenv("DISCORD_CHANNEL_ID_SURGE")
 
 # Variasi chat
 chat_1 = """CHEAP SURG TOOLS AT <:Arrow:850540193626193941> HereCheapSurg
@@ -66,6 +67,40 @@ VISIT NOW <:Arrow:850540193626193941> HereCheapSurg"""
 
 chat_list = [chat_1, chat_2]
 
+
+
+chat_surge ="Sell Cheap Surg E 1/:WL: at HereCheapSurg"
+
+# func chat surg-e
+def send_messagesurge():
+    if not TOKEN or not CHANNEL_ID_SURGE:
+        logging.error("TOKEN atau CHANNEL_ID_SURGE tidak ditemukan di file .env")
+        return False
+
+    url = f"https://discord.com/api/v9/channels/{CHANNEL_ID_SURGE}/messages"
+
+    headers = {
+        "Authorization": TOKEN,
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    }
+
+    pesan = chat_surge
+    payload = {"content": pesan}
+
+    try:
+        res = requests.post(url, headers=headers, json=payload)
+        if res.status_code == 200:
+            logging.info("Sukses ngirim pesan promosi surg-e.")
+            return True
+        else:
+            logging.error(f"Gagal ngirim, status: {res.status_code} - {res.text}")
+            return False
+    except Exception as e:
+        logging.error(f"Koneksi/Script Error: {e}")
+        return False
+
+# func chat surg tools
 def send_message():
     if not TOKEN or not CHANNEL_ID:
         logging.error("TOKEN atau CHANNEL_ID tidak ditemukan di file .env")
@@ -85,7 +120,7 @@ def send_message():
     try:
         res = requests.post(url, headers=headers, json=payload)
         if res.status_code == 200:
-            logging.info("Sukses ngirim pesan promosi.")
+            logging.info("Sukses ngirim pesan promosi surg tools.")
             return True
         else:
             logging.error(f"Gagal ngirim, status: {res.status_code} - {res.text}")
@@ -98,14 +133,18 @@ def send_message():
 logging.info("Bot Auto-Chat Dimulai...")
 
 while True:
-    berhasil = send_message()
-
-    if not berhasil:
-        logging.warning("Gagal ngirim, mencoba lagi dalam 60 detik...")
+    while not send_message():
+        logging.warning("Gagal ngirim pesan promosi surg tools, mencoba lagi dalam 60 detik...")
         time.sleep(60)
-        continue
 
-    # Cooldown 2 Jam (7200 detik) + Random Delay (1 - 15 menit)
+    delay = random.randint(5, 15)
+    logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
+    time.sleep(delay)
+
+    while not send_messagesurge():
+        logging.warning("Gagal ngirim pesan promosi surg-e, mencoba lagi dalam 60 detik...")
+        time.sleep(60)
+
     jeda_tambahan = random.randint(60, 900)
     total_jeda = 7200 + jeda_tambahan
 
