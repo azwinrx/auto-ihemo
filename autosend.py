@@ -133,7 +133,7 @@ def send_message():
 logging.info("Bot Auto-Chat Dimulai...")
 
 while True:
-    while not send_message():
+    if not send_message():
         logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
         time.sleep(15)
 
@@ -141,7 +141,7 @@ while True:
     logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
     time.sleep(delay)
 
-    while not send_messagesurge():
+    if not send_messagesurge():
         logging.warning("Gagal ngirim pesan promosi surg-e, sleep 15 detik")
         time.sleep(15)
 
