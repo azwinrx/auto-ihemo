@@ -135,7 +135,7 @@ logging.info("Bot Auto-Chat Dimulai...")
 while True:
     while not send_message():
         logging.warning("Gagal ngirim pesan promosi surg tools, mencoba lagi dalam 60 detik...")
-        time.sleep(60)
+        time.sleep(15)
 
     delay = random.randint(5, 15)
     logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
@@ -143,7 +143,7 @@ while True:
 
     while not send_messagesurge():
         logging.warning("Gagal ngirim pesan promosi surg-e, mencoba lagi dalam 60 detik...")
-        time.sleep(60)
+        time.sleep(15)
 
     jeda_tambahan = random.randint(60, 900)
     total_jeda = 7200 + jeda_tambahan
