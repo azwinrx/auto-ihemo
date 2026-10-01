@@ -20,7 +20,8 @@ logging.basicConfig(
 # Load environment variables dari file .env
 load_dotenv()
 
-TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN1 = os.getenv("DISCORD_TOKEN")
+TOKEN2 = os.getenv("DISCORD_TOKEN2")
 CHANNEL_ID = os.getenv("DISCORD_CHANNEL_ID")
 CHANNEL_ID_SURGE = os.getenv("DISCORD_CHANNEL_ID_SURGE")
 
@@ -69,18 +70,18 @@ chat_list = [chat_1, chat_2]
 
 
 
-chat_surge ="Sell Cheap Surg E 1/:WL: at HereCheapSurg"
+chat_surge ="""sell Surg E 1/ <:WL:880251447470596157> at HereCheapSurg"""
 
 # func chat surg-e
-def send_messagesurge():
-    if not TOKEN or not CHANNEL_ID_SURGE:
+def send_messagesurge(token, channel_id):
+    if not token or not channel_id:
         logging.error("TOKEN atau CHANNEL_ID_SURGE tidak ditemukan di file .env")
         return False
 
-    url = f"https://discord.com/api/v9/channels/{CHANNEL_ID_SURGE}/messages"
+    url = f"https://discord.com/api/v9/channels/{channel_id}/messages"
 
     headers = {
-        "Authorization": TOKEN,
+        "Authorization": token,
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
@@ -101,15 +102,15 @@ def send_messagesurge():
         return False
 
 # func chat surg tools
-def send_message():
-    if not TOKEN or not CHANNEL_ID:
+def send_message(token, channel_id):
+    if not token or not channel_id:
         logging.error("TOKEN atau CHANNEL_ID tidak ditemukan di file .env")
         return False
 
-    url = f"https://discord.com/api/v9/channels/{CHANNEL_ID}/messages"
+    url = f"https://discord.com/api/v9/channels/{channel_id}/messages"
 
     headers = {
-        "Authorization": TOKEN,
+        "Authorization": token,
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
     }
@@ -133,22 +134,45 @@ def send_message():
 logging.info("Bot Auto-Chat Dimulai...")
 
 while True:
-    if not send_message():
+
+#Kirim akun 1
+    if not send_message(TOKEN1, CHANNEL_ID):
         logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
         time.sleep(15)
 
-    delay = random.randint(5, 15)
+    delay = random.randint(1, 60)
     logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
     time.sleep(delay)
 
-    if not send_messagesurge():
+    if not send_messagesurge(TOKEN1, CHANNEL_ID_SURGE):
         logging.warning("Gagal ngirim pesan promosi surg-e, sleep 15 detik")
         time.sleep(15)
-
-    jeda_tambahan = random.randint(60, 900)
-    total_jeda = 7200 + jeda_tambahan
+    
+    jeda_tambahan = random.randint(60, 600) 
+    total_jeda = 3600 + jeda_tambahan
 
     menit = total_jeda // 60
     detik = total_jeda % 60
-    logging.info(f"Nunggu {menit} menit {detik} detik buat chat berikutnya...")
+    logging.info(f"Nunggu {menit} menit {detik} detik buat chat di akun berikutnya...")
     time.sleep(total_jeda)
+
+# Kirim akun 2
+    if not send_message(TOKEN2, CHANNEL_ID):
+        logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
+        time.sleep(15)
+
+    delay = random.randint(1, 60)
+    logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
+    time.sleep(delay)
+
+    if not send_messagesurge(TOKEN2, CHANNEL_ID_SURGE):
+        logging.warning("Gagal ngirim pesan promosi surg-e, sleep 15 detik")
+        time.sleep(15)
+
+    jeda_tambahan = random.randint(60, 600)
+    total_jeda = 3600 + jeda_tambahan
+    menit = total_jeda // 60
+    detik = total_jeda % 60
+    logging.info(f"Nunggu {menit} menit {detik} detik buat chat di akun berikutnya...")
+    time.sleep(total_jeda)
+
