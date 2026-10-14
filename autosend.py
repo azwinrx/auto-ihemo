@@ -70,7 +70,13 @@ chat_list = [chat_1, chat_2]
 
 
 
-chat_surge ="""sell Surg E 1/ <:WL:880251447470596157> at HereCheapSurg"""
+chat_surge ="""sell Surg E 1/ <:WL:880251447470596157> at HereCheapSurg
+sell Surg E 1/ :WL: at SURGSOVI
+sell Surg E 1/ :WL: at SURGSOVI
+sell Surg E 1/ :WL: at SURGSOVI
+sell Surg E 1/ :WL: at SURGSOVI
+
+STOCK 30K ON VENDING"""
 
 # func chat surg-e
 def send_messagesurge(token, channel_id):
