@@ -70,8 +70,7 @@ chat_list = [chat_1, chat_2]
 
 
 
-chat_surge ="""sell Surg E 1/ <:WL:880251447470596157> at HereCheapSurg
-sell Surg E 1/ :WL: at SURGSOVI
+chat_surge ="""sell Surg E 1/ :WL: at SURGSOVI
 sell Surg E 1/ :WL: at SURGSOVI
 sell Surg E 1/ :WL: at SURGSOVI
 sell Surg E 1/ :WL: at SURGSOVI
