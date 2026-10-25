@@ -20,7 +20,7 @@ logging.basicConfig(
 # Load environment variables dari file .env
 load_dotenv()
 
-TOKEN1 = os.getenv("DISCORD_TOKEN")
+TOKEN1 = os.getenv("DISCORD_TOKEN1")
 TOKEN2 = os.getenv("DISCORD_TOKEN2")
 CHANNEL_ID = os.getenv("DISCORD_CHANNEL_ID")
 CHANNEL_ID_SURGE = os.getenv("DISCORD_CHANNEL_ID_SURGE")
@@ -70,10 +70,9 @@ chat_list = [chat_1, chat_2]
 
 
 
-chat_surge ="""sell Surg E 1/ :WL: at SURGSOVI
-sell Surg E 1/ :WL: at SURGSOVI
-sell Surg E 1/ :WL: at SURGSOVI
-sell Surg E 1/ :WL: at SURGSOVI
+chat_surge ="""sell Surg E 1/ <:WL:880251447470596157> at SURGSOVI
+sell Surg E 1/ <:WL:880251447470596157> at SURGSOVI
+sell Surg E 1/ <:WL:880251447470596157> at SURGSOVI
 
 STOCK 30K ON VENDING"""
 
