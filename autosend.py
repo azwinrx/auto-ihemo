@@ -141,9 +141,9 @@ logging.info("Bot Auto-Chat Dimulai...")
 while True:
 
 #Kirim akun 1
-    if not send_message(TOKEN1, CHANNEL_ID):
-        logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
-        time.sleep(15)
+    # if not send_message(TOKEN1, CHANNEL_ID):
+    #     logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
+    #     time.sleep(15)
 
     delay = random.randint(1, 60)
     logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
@@ -162,9 +162,9 @@ while True:
     time.sleep(total_jeda)
 
 # Kirim akun 2
-    if not send_message(TOKEN2, CHANNEL_ID):
-        logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
-        time.sleep(15)
+    # if not send_message(TOKEN2, CHANNEL_ID):
+    #     logging.warning("Gagal ngirim pesan promosi surg tools, sleep 15 detik")
+    #     time.sleep(15)
 
     delay = random.randint(1, 60)
     logging.info(f"Nunggu {delay} detik sebelum ngirim chat surg-e...")
